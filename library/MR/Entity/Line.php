@@ -112,7 +112,7 @@ class Line {
      */
     public function unsetProfile($key){
         foreach ($this->profile as $k => $profile){
-            if($profile->profile_key == $key){
+            if($profile->getProfileKey() == $key){
                 unset($this->profile[$k]);
             }
         }

@@ -11,23 +11,17 @@ class IndexController extends Zend_Controller_Action
     public function indexAction(){
         $em = Zend_Registry::get('doctrine')->getEntityManager();
         
-        $line = $em->find('\MR\Entity\Line', 1);
-//        $line = new \MR\Entity\Line();
-//        $line->setInitial('DRL');
-        $line->setInitial('MMM');
+        $keySecret = new \MR\Entity\KeySecret();
         
-        $em->persist($line);
+        $key = rand(1, 100000000);
         
-//        $notification = new \MR\Entity\LineNotification();
-        $notifications = $line->getNotification();
-        $notification = $notifications[0];
-        $notification->setLevel(4);
-        $notification->setLine($line);
-        $notification->setContentEn('English Content');
-        $notification->setContentZh('中文內容');
+        $keySecret->setAPIKey($key);
+        $keySecret->setAPISecret(md5(($key * $key) ^ $key)); 
         
-        $em->persist($notification);
+        $em->persist($keySecret);
         $em->flush();
+        
+        
     }
 
     public function importlineAction(){
