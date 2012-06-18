@@ -1,5 +1,7 @@
 <?php
+
 namespace MR\Entity;
+
 /**
  * Description of LineNotification
  *
@@ -67,6 +69,14 @@ class LineNotification {
     }
 
     /**
+     * Getter of Id
+     * @return type 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
      * Setter of Line
      * @param Line $line 
      */
@@ -129,6 +139,14 @@ class LineNotification {
      */
     public function getContentZh() {
         return $this->content_zh;
+    }
+
+    /**
+     * Getter of ts_created
+     * @return type 
+     */
+    public function getCreated() {
+        return $this->ts_created;
     }
 
     /**
